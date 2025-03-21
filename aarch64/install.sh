@@ -1,7 +1,7 @@
 #!/bin/bash
 
-URL_DISTR="https://dl-cdn.alpinelinux.org/alpine/v3.18/releases/aarch64/alpine-virt-3.18.3-aarch64.iso"
-URL_EFI="http://ftp.de.debian.org/debian/pool/main/e/edk2/qemu-efi-aarch64_2023.05-2_all.deb"
+URL_DISTR="https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/aarch64/alpine-virt-3.21.3-aarch64.iso"
+URL_EFI="http://ftp.de.debian.org/debian/pool/main/e/edk2/qemu-efi-aarch64_2025.02-3_all.deb"
 
 DISK_NAME="alpine.aarch64.qcow2"
 DISK_SIZE="8G"
@@ -15,8 +15,7 @@ fi
 if [ ! -f $(basename $URL_EFI) ]; then
 	wget $URL_EFI
   dpkg -x $(basename $URL_EFI) tmp
-  mv ./tmp/usr/share/AAVMF/AAVMF_CODE.fd ./
-  mv ./tmp/usr/share/AAVMF/AAVMF_VARS.fd ./
+  mv ./tmp/usr/share/AAVMF/AAVMF_CODE* ./
   rm -rf tmp
 fi
 
